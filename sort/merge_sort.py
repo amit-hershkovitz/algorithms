@@ -1,6 +1,17 @@
 from typing import List
 
 
+def merge_sort(arr: List[int]) -> List[int]:
+    if len(arr) == 1:
+        arr_sorted = arr
+    else:
+        arr1, arr2 = arr[len(arr) // 2:], arr[:len(arr) // 2]
+        arr1_sorted, arr2_sorted = merge_sort(arr1), merge_sort(arr2)
+        arr_sorted = merge(arr1_sorted, arr2_sorted)
+
+    return arr_sorted
+
+
 def merge(list1: List[int], list2: List[int]) -> List[int]:
     merged_list = []
 
@@ -26,4 +37,3 @@ def merge(list1: List[int], list2: List[int]) -> List[int]:
             index2 += 1
 
     return merged_list
-
